@@ -12,6 +12,7 @@ export class WeatherService {
     getPlaceInfo(places_string) {
 
         const value = encodeURI(places_string);
+        
 return this._http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${value}i&key=AIzaSyCQQLKfJochnUngKqY_DaEBjC0RWCzXajg`)
         .pipe(map((rsp:any) => {
              return rsp.results[0];
