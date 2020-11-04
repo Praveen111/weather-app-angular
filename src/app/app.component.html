@@ -1,0 +1,76 @@
+<h1><i class="fa fa-cloud"></i> Weather App</h1>
+
+<div id="select" align="center">
+  <label for="name">Select a city :</label>
+    <select (change)="getWeatherData($event.target.value)">
+      <option selected> Please select</option>
+        <option  *ngFor="let place of places">{{place}}</option>
+       
+      </select>
+
+    <h2>OR</h2>
+
+<label>Enter place:</label><input type="text" [(ngModel)]="place" name="place">
+<button (click)="getWeatherData(place)">Submit</button>
+</div>
+
+<div id="start" *ngIf="!current">
+<h1>Welcome to weather Information App!!</h1>
+
+</div>
+<br>
+
+<div id="today" align="center" *ngIf="current">
+  <label  id="present">Current :</label> <span *ngIf="current">{{current.time * 1000 | date:'medium'}}</span>
+<br>
+<br>
+  <div class="container" *ngIf="current">
+    <div class="item"><label>Summary </label> <p>{{current.summary}}</p><span><i class="wi " [ngClass]="getIcon(current.icon)"></i></span></div>
+    <div class="item"><label>Temprature <i class="wi wi-thermometer"></i></label> <span> <p>{{((current.temperature  - 32) * .5556).toFixed(0)}}  <i class="wi wi-celsius"></i></p> </span> </div> 
+    <div class="item"><label>Humidity <i class="wi wi-humidity"></i></label> <p>{{current.humidity}} %</p></div>
+    <div class="item"><label>Pressure <i class="wi wi-barometer"></i></label> <p>{{current.pressure}} hPa</p></div>
+    <div class="item"><label>UVIndex <i class="wi wi-sunrise"></i></label> <p>{{current.uvIndex}}</p></div>
+    <div class="item"><label>Visibility <i class="fa fa-eye"></i></label> <p>{{current.visibility}}+ km</p></div>
+    </div>
+</div>
+
+
+<div id="chart" *ngIf="hourly" align="center">
+<h2>Next 10 hours Temprature :</h2>
+<button *ngIf="!isDegree" type="button" (click)="convertData()">Show in &#8451;</button>
+<button *ngIf="isDegree" type="button" (click)="convertData()">Show in &#8457;</button>
+<br><br>
+<fusioncharts
+    [id]="id"
+    [width]="width"
+    [height]="height"
+    [type]="type"
+    [dataFormat]="dataFormat"
+    [dataSource]="dataSource"
+></fusioncharts>
+
+</div>
+<br>
+<hr *ngIf="weekly"/>
+<div id="weekly" *ngIf="weekly">
+       <h3 style="text-align: center">Weekly Prediction :    <i style="font-size: 40px" class="wi " [ngClass]="getIcon(weekly.icon)"></i></h3> 
+     
+     
+      <h2>{{weekly.summary}}</h2>
+
+      <div class="days">
+         <ul>
+           <div>
+              <li *ngFor="let day of weekly.data"> <h3>{{day.time * 1000 | date:'fullDate'}}</h3> <p>{{day.summary}} </p> <i style="font-size: 40px" class='wi ' [ngClass]="getIcon(day.icon)"></i> </li>
+           </div>
+         
+         </ul>
+      </div>
+  
+</div>
+
+<footer class="footer">
+  <b>&copy; Copyright 2018 Weather App</b>
+</footer>
+
+

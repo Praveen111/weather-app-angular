@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+@import url('https://fonts.googleapis.com/css?family=Vollkorn');
+$break-small: 520px;
+
+
+ul {
+  list-style-type: none;
+}
+
+h2 {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  >i {
+    padding: 10px;
+    font-size: 50px;
+    background-color: #38c8dd;
+    border-radius: 10%;
+  }
+}
+
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: #38c8dd;
+  padding: 10px;
+  width: 75%;
+  margin: 0 auto;
+  @media screen and (max-width: $break-small) {
+    width: 95%
+  }
+
+}
+
+.item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+
+  >label {
+    font-style: italic;
+    text-decoration: underline;
+    background-color: lightcyan;
+    padding: 10px;
+    @media screen and (max-width: $break-small) {
+      padding: 0px;
+    }
+  }
+  >span>i {
+    font-size: 40px;
+  }
+}
+
+p {
+  padding: 10px;
+}
+
+#chart {
+  width: 100%;
+  margin: 0 auto;
+  >h2 {
+    text-transform: capitalize;
+
+  }
+}
+
+h1 {
+  padding: 10px;
+  background-color: lightskyblue;
+  font-family: fantasy;
+  color: darkmagenta;
+}
+
+#start {
+
+  >h1 {
+    animation: blinkingText 4s infinite;
+  }
+
+}
+
+h2 {
+  padding: 2%;
+  font-family: 'Vollkorn', serif;
+}
+
+
+option {
+  text-align: center;
+}
+
+#today {
+  padding: 10px;
+ 
+  > label {
+    font-size: 30px;
+    padding: 10px;
+
+    font-family: sans-serif;
+    @media screen and (max-width: $break-small) {
+      font-size: 20px;
+    }
+  }
+}
+
+#select {
+  padding: 30px;
+  border: 1px solid rgb(152, 53, 152);
+  border-style: dotted;
+  >label {
+    font-family: 'Noto Serif', serif;
+    font-size: 30px;
+    padding: 10px;
+    @media screen and (max-width: $break-small) {
+        font-size: 15px;
+        padding: 0px;
+      }
+  }
+  >h2 {
+    @media screen and (max-width: $break-small) {
+        font-size: 15px;
+      }
+  }
+  >button{
+
+    @media screen and (max-width: $break-small) {
+        padding: 10px;
+        margin: 5%;
+      }
+  
+  }
+  >input{
+
+    @media screen and (max-width: $break-small) {
+       
+        margin: 10%;
+      }
+  
+  }
+  
+}
+
+#weekly {
+  margin: 0 auto;
+  font-family: 'Vollkorn', serif;
+}
+
+#today>label {
+  font-family: 'Vollkorn', serif;
+}
+
+@keyframes example {
+  from {
+    color: rgb(106, 178, 202);
+  }
+  to {
+    color: lightblue;
+  }
+}
+
+@keyframes shine {
+  from {
+    color: #ffb366;
+  }
+  to {
+    color: #ff6600;
+  }
+}
+
+@keyframes nighteffect {
+  from {
+    color: rgb(113, 150, 255);
+  }
+  to {
+    color: rgb(49, 63, 255);
+  }
+}
+
+@keyframes clearnight {
+  from {
+    color: rgba(11, 69, 134, 0.911)
+  }
+  to {
+    color: rgb(83, 145, 213);
+  }
+}
+
+@keyframes cloudy-effect {
+  from {
+    color: rgba(11, 69, 134, 0.911)
+  }
+  to {
+    color: rgb(83, 145, 213);
+  }
+}
+
+@keyframes blinkingText {
+  0% {
+    color: darkmagenta;
+  }
+  49% {
+    color: transparent;
+  }
+  50% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: darkmagenta;
+  }
+}
+
+i {
+  &.wi-day-rain {
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+  &.wi-thermometer {
+    color: lightcoral;
+    font-size: 30px;
+    padding: 3px;
+  }
+  &.wi-humidity {
+    padding: 5px;
+    color: #38c8dd;
+    font-size: 30px
+  }
+  &.wi-barometer {
+    padding: 5px;
+    color: rgb(40, 66, 170);
+    font-size: 30px
+  }
+  &.fa-eye {
+    padding: 5px;
+    color: brown;
+    font-size: 30px
+  }
+  &.wi-sunrise {
+    color: red;
+    font-size: 30px;
+    padding: 3px;
+  }
+  &.fa-cloud {
+    box-shadow: 1px 1px #38c8dd;
+    margin: 1%;
+  }
+  &.wi-day-sunny,
+  &.wi-day-light-wind,
+  &.wi-day-cloudy-windy {
+    animation: shine 1s;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+  &.wi-night-partly-cloudy,
+  &.wi-night-cloudy {
+    animation: nighteffect 1s;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  } 
+  &.wi-night-clear {
+    animation: clearnight 1s;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+  &.wi-day-cloudy {
+    animation: cloudy-effect 1s;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+}
+
+.days {
+  width: 75%;
+  margin: 0 auto;
+  ul>div>li {
+    border: 1px solid;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(243, 250, 221);
+  }
+}
+
+.footer,
+.push {
+  height: 50px;
+  text-align: center;
+  background-color: lightcyan;
+  padding: 30px;
+
+}
